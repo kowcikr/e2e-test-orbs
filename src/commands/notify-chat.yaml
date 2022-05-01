@@ -5,9 +5,6 @@ parameters:
     type: boolean
 steps:
   - run:
-      name: "Set GIT_COMMIT_MESSAGE"
-      when: always
-  - run:
       name: Chat Notification Fail
       when: on_fail
       command: >

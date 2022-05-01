@@ -1,12 +1,8 @@
 description: 'Adding node modules cache.'
-parameters:
-  linux_env:
-    default: false
-    type: boolean
 steps:
   - restore_cache:
-    keys:
-      - node-v1-{{ checksum "./package.json" }}
+      keys:
+        - node-v1-{{ checksum "./package.json" }}
   - run:
       name: Install Dependency
       working_directory: ~/repo

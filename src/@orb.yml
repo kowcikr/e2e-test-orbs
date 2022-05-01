@@ -1,15 +1,7 @@
 version: 2.1
-
+orbs:
+  build-tools: circleci/build-tools@3.0.0  
 description: >
   This orb is created for demonstrating the orb creation process using orb developement kit
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
-
-# This information will be displayed in the orb registry and is not mandatory.
-display:
-  home_url: "https://github.com/kowcikr/e2e-test-orbs"
-  source_url: "https://github.com/kowcikr/e2e-test-orbs"
-
-# If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.
-# orbs:
-#  hello: circleci/hello-build@0.0.5
