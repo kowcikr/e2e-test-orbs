@@ -1,0 +1,14 @@
+description: 'Adding node modules cache.'
+steps:
+  - restore_cache:
+      keys:
+        - node-v1-{{ checksum "./package.json" }}
+  - run:
+      name: Install Dependency
+      working_directory: ~/repo
+      command: |
+        npm install
+  - save_cache:
+      key: node-v1-{{ checksum "./package.json" }}
+      paths:
+        - ./node_modules

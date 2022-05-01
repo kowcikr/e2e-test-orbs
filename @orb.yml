@@ -7,9 +7,8 @@ description: >
 
 # This information will be displayed in the orb registry and is not mandatory.
 display:
-  home_url: "https://github.com/CircleCI-Public/orb-tools-orb/"
-  source_url: "https://circleci.com/docs/2.0/orb-author/"
-
+  home_url: "https://circleci.com/docs/2.0/orb-author/"
+  source_url: "https://github.com/CircleCI-Public/orb-tools-orb/"
 # If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.
 # orbs:
 #  hello: circleci/hello-build@0.0.5

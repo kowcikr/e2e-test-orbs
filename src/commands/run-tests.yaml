@@ -1,0 +1,11 @@
+description: 'Running e2e tests'
+parameters:
+  suite:
+    type: string
+    default: "sanity"
+    description: "parameter to run functional or sanity suite"
+steps:
+  - run:
+        name: Run <<parameters.suite>> Tests
+        command: |
+          npm run <<parameters.suite>>

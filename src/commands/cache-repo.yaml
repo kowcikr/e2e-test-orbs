@@ -1,0 +1,11 @@
+description: 'Git repository cache'
+steps:
+  - restore_cache:
+      keys:
+        - source-v1-{{ .Branch }}-{{ .Revision }}
+  - checkout:
+      path: ~/repo
+  - save_cache:
+      key: source-v1-{{ .Branch }}-{{ .Revision }}
+      paths:
+        - '.git'
