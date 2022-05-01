@@ -1,4 +1,4 @@
-description: 'Adding node modules cache'
+description: 'Adding node modules cache.'
     parameters:
       linux_env:
         default: false
