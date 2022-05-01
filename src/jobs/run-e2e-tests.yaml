@@ -1,0 +1,33 @@
+description: >
+  This is a sample executor using Docker and Node. If you want to provide a custom environment in your orb, insert your image here.
+  If you do not require an executor, you can simply delete this directory.
+executor: node-executor
+working_directory: ~/repo
+parameters:
+  suite:
+    type: string
+    default: "sanity"
+    description: "test to run functional or sanity suite"
+  notify_success:
+    type: boolean
+    default: false
+    description: "to notifiy the status in chat"
+steps:
+  - cache-repo
+  - dependency-cache
+  - run-tests:
+      suite: << parameters.suite >>
+  - run:
+      name: Create artifacts directory
+      when: always
+      command: mkdir -p /tmp/artifacts/
+  - run:
+      name: Copy Artifacts to CircleCI
+      when: always
+      command: cp -r mochawesome-report /tmp/artifacts
+  - store_artifacts:
+      path: /tmp/artifacts/
+  - store_test_results:
+      path: /tmp/artifacts/
+  - notify-chat:
+      notify_success: << parameters.notify_success >>
