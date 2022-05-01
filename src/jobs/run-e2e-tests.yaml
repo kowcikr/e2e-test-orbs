@@ -1,0 +1,32 @@
+description: >
+  this job is created for running e2e suite 
+executor: node-executor
+working_directory: ~/repo
+parameters:
+  suite:
+    type: string
+    default: "sanity"
+    description: "test to run functional or sanity suite"
+  notify_success:
+    type: boolean
+    default: false
+    description: "to notifiy the status in chat"
+steps:
+  - cache-repo
+  - dependency-cache
+  - run-tests
+      suite: << parameters.suite >>
+  - run:
+      name: Create artifacts directory
+      when: always
+      command: mkdir -p /tmp/artifacts/
+  - run:
+      name: Copy Artifacts to CircleCI
+      when: always
+      command: cp -r mochawesome-report /tmp/artifacts   
+  - store_artifacts:
+      path: /tmp/artifacts/
+  - store_test_results:
+      path: /tmp/artifacts/
+  - notify-google-chat:
+      notify_success: << parameters.notify_success >>           
