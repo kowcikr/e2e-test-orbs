@@ -1,5 +1,6 @@
 description: >
-  this job is created for running e2e suite 
+  This is a sample executor using Docker and Node. If you want to provide a custom environment in your orb, insert your image here.
+  If you do not require an executor, you can simply delete this directory.
 executor: node-executor
 working_directory: ~/repo
 parameters:
@@ -14,7 +15,7 @@ parameters:
 steps:
   - cache-repo
   - dependency-cache
-  - run-tests
+  - run-tests:
       suite: << parameters.suite >>
   - run:
       name: Create artifacts directory
@@ -23,10 +24,10 @@ steps:
   - run:
       name: Copy Artifacts to CircleCI
       when: always
-      command: cp -r mochawesome-report /tmp/artifacts   
+      command: cp -r mochawesome-report /tmp/artifacts
   - store_artifacts:
       path: /tmp/artifacts/
   - store_test_results:
       path: /tmp/artifacts/
-  - notify-google-chat:
-      notify_success: << parameters.notify_success >>           
+  - notify-chat:
+      notify_success: << parameters.notify_success >>
