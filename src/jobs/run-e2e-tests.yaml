@@ -1,7 +1,8 @@
 description: >
   This is a sample executor using Docker and Node. If you want to provide a custom environment in your orb, insert your image here.
   If you do not require an executor, you can simply delete this directory.
-executor: node-executor
+
+executor: ubuntu-machine
 working_directory: ~/repo
 parameters:
   suite:
