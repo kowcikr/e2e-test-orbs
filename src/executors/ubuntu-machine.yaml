@@ -3,3 +3,4 @@ description: >
   If you do not require an executor, you can simply delete this directory.
 machine:
     image: "ubuntu-2004:202101-01"
+resource_class: small
